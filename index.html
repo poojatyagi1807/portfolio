@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pooja Tyagi — Principal Product Manager</title>
+
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy-deep:   #0A1628;
+    --navy-mid:    #1B3A5C;
+    --navy-light:  #2A527A;
+    --gold:        #C8A96E;
+    --gold-light:  #E2CC9C;
+    --off-white:   #F7F5F1;
+    --body-text:   #2D2D2D;
+    --muted:       #6B7280;
+    --card-bg:     #FFFFFF;
+    --border:      #E5E2DC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--off-white);
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navy-deep);
+    z-index: 100;
+    padding: 0 48px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+  }
+  .nav-name {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 0.3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(247,245,241,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy-deep);
+    padding: 120px 48px 80px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(42px, 6vw, 68px);
+    color: var(--off-white);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(247,245,241,0.65);
+    max-width: 600px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--navy-deep);
+  }
+
+  /* IMPACT TICKER — the signature element */
+  .impact-ticker {
+    background: var(--navy-mid);
+    padding: 0 48px;
+    border-bottom: 3px solid rgba(200,169,110,0.15);
+  }
+  .ticker-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .ticker-stat {
+    padding: 36px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(200,169,110,0.12);
+    position: relative;
+  }
+  .ticker-stat:last-child { border-right: none; }
+  .ticker-stat::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s, width 0.3s;
+  }
+  .ticker-stat:hover::after { opacity: 1; width: 48px; }
+  .stat-number {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(247,245,241,0.55);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 48px;
+  }
+  .section-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 32px;
+    color: var(--navy-deep);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* WORK CARDS */
+  .work-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .work-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .work-card:hover {
+    box-shadow: 0 8px 32px rgba(10,22,40,0.08);
+    transform: translateY(-2px);
+  }
+  .work-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .work-card:hover::before { opacity: 1; }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    background: rgba(27,58,92,0.07);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .card-company {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .card-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 21px;
+    color: var(--navy-deep);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .card-body {
+    font-size: 14.5px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .card-outcomes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .outcome-pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--navy-mid);
+    border: 1px solid rgba(27,58,92,0.2);
+    padding: 4px 14px;
+    letter-spacing: 0.2px;
+  }
+  .outcome-pill.gold {
+    color: #8B6914;
+    border-color: rgba(200,169,110,0.5);
+    background: rgba(200,169,110,0.08);
+  }
+
+  /* AI PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .project-card {
+    background: var(--navy-deep);
+    padding: 28px;
+    border: 1px solid rgba(200,169,110,0.1);
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: rgba(200,169,110,0.4); }
+  .project-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(200,169,110,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  .project-name {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 18px;
+    color: var(--off-white);
+    margin-bottom: 10px;
+  }
+  .project-desc {
+    font-size: 13px;
+    color: rgba(247,245,241,0.6);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .project-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-link:hover { color: var(--gold-light); }
+
+  /* SKILLS */
+  .skills-section { background: var(--navy-deep); }
+  .skills-section .section-title { color: var(--off-white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .skill-group {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,169,110,0.1);
+    padding: 24px 28px;
+  }
+  .skill-group-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-tag {
+    font-size: 12px;
+    color: rgba(247,245,241,0.75);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 12px;
+    font-weight: 400;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--off-white);
+    text-align: center;
+    padding: 80px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .contact-section .section-title { margin-bottom: 16px; }
+  .contact-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .contact-link.primary {
+    background: var(--navy-deep);
+    color: var(--off-white);
+    border: 1.5px solid var(--navy-deep);
+  }
+  .contact-link.primary:hover {
+    background: var(--navy-mid);
+    border-color: var(--navy-mid);
+  }
+  .contact-link.secondary {
+    background: transparent;
+    color: var(--navy-deep);
+    border: 1.5px solid var(--navy-deep);
+  }
+  .contact-link.secondary:hover {
+    background: var(--navy-deep);
+    color: var(--off-white);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-deep);
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: rgba(247,245,241,0.3);
+    letter-spacing: 0.5px;
+  }
+
+  /* DIVIDER */
+  .gold-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .impact-ticker { padding: 0 20px; }
+    .ticker-inner { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 60px 24px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .work-card { padding: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Pooja Tyagi</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Principal Product Manager</p>
+  <h1>Pooja Tyagi</h1>
+  <p class="hero-sub">10+ years building enterprise platform strategy at scale. From authentication and API governance to LLM-powered analytics — owning complex product areas end-to-end and shipping outcomes that move businesses forward.</p>
+</div>
+
+<!-- IMPACT TICKER -->
+<div class="impact-ticker">
+  <div class="ticker-inner">
+    <div class="ticker-stat">
+      <div class="stat-number">$1M+</div>
+      <div class="stat-label">Incremental ARR Driven</div>
+    </div>
+    <div class="ticker-stat">
+      <div class="stat-number">99.95%</div>
+      <div class="stat-label">Platform SLO Achieved</div>
+    </div>
+    <div class="ticker-stat">
+      <div class="stat-number">700+</div>
+      <div class="stat-label">Institutional B2B Clients</div>
+    </div>
+    <div class="ticker-stat">
+      <div class="stat-number">50K</div>
+      <div class="stat-label">Licensed Platform Users</div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <p class="section-eyebrow">Experience</p>
+    <h2 class="section-title">Work that moved the business</h2>
+    <div class="work-cards">
+
+      <div class="work-card">
+        <div class="card-meta">
+          <span class="card-tag">Strategy and Revenue</span>
+          <span class="card-company">S&amp;P Global (via IHS Markit merger)</span>
+        </div>
+        <h3 class="card-title">Turned fragmented benchmark workflows into a $1M+ ARR subscription product</h3>
+        <p class="card-body">Investment managers were manually matching fund strategies to static PDF benchmarks outside the platform — a brittle two-step process that eroded trust in performance data. Led the strategic case for embedding Cambridge Associates benchmark data directly into iLevel by strategy, currency, and methodology. Defined the integration architecture, drove partner selection over a competing Preqin bid, and launched a subscription-based in-platform analytics product with audit controls. S&amp;P now manages quarterly distribution; CA handles granular regional calculations across APAC, North America, and Europe.</p>
+        <div class="card-outcomes">
+          <span class="outcome-pill gold">$1M+ incremental ARR</span>
+          <span class="outcome-pill">Competitive analysis: CA vs Preqin</span>
+          <span class="outcome-pill">Product-led revenue model</span>
+          <span class="outcome-pill">Subscription launch</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="card-meta">
+          <span class="card-tag">Platform Reliability</span>
+          <span class="card-company">S&amp;P Global (via IHS Markit merger)</span>
+        </div>
+        <h3 class="card-title">Led platform migration from monolith to microservices, cutting incidents by 80%</h3>
+        <p class="card-body">A monolithic platform architecture was generating 10 SEV1/SEV2 incidents per six months across 700 institutional clients. Partnered with architecture and engineering leads to define the migration strategy from monolithic workflows to a microservices-based platform, making trade-off decisions across scalability, latency targets, and rollback risk. Owned the product requirements and acceptance criteria through every sprint. Delivered 99.95% SLO and reduced critical incidents to 2 per six months — directly protecting renewal conversations across BlackRock, Hamilton Lane, and AIA.</p>
+        <div class="card-outcomes">
+          <span class="outcome-pill gold">99.95% SLO</span>
+          <span class="outcome-pill gold">SEV1/SEV2 reduced 10 to 2</span>
+          <span class="outcome-pill">Architecture trade-off leadership</span>
+          <span class="outcome-pill">Cross-team delivery</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="card-meta">
+          <span class="card-tag">AI and Analytics</span>
+          <span class="card-company">S&amp;P Global (via IHS Markit merger)</span>
+        </div>
+        <h3 class="card-title">Delivered 83% accuracy on natural-language portfolio queries for 300+ enterprise users using a fine-tuned in-house LLM</h3>
+        <p class="card-body">Investment teams needed natural-language access to portfolio data, but deploying a frontier LLM off-the-shelf posed regulatory language and institutional tone risks. Made the strategic decision to integrate Spark Assist — a fine-tuned in-house LLM trained on S&amp;P tone, behavior, and proprietary financial knowledge — rather than use a frontier model, achieving significant cost advantage and domain precision. Defined the production-readiness evaluation framework with real query test cases from SMEs and friendly clients, synthetic red-team datasets, and behavioral guardrails. Implemented authorization-before-retrieval architecture to enforce access control at the retrieval layer before any LLM call.</p>
+        <div class="card-outcomes">
+          <span class="outcome-pill gold">83% accuracy</span>
+          <span class="outcome-pill gold">300+ enterprise users</span>
+          <span class="outcome-pill">Fine-tuned in-house LLM</span>
+          <span class="outcome-pill">Enterprise compliance architecture</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="card-meta">
+          <span class="card-tag">Compliance and Security</span>
+          <span class="card-company">S&amp;P Global (via IHS Markit merger)</span>
+        </div>
+        <h3 class="card-title">Blocked a multi-product rollout to protect 100% GDPR compliance across EU clients</h3>
+        <p class="card-body">A planned unified suite rollout was viable in the US but would have violated GDPR data residency requirements for EU clients by co-mingling US and EU data on shared infrastructure. Authored the trade-off decision document and RAID log escalated to executive leadership, making the case to halt the rollout until regional server separation was implemented. Defined the architectural requirements for US/EU separation, worked with engineering to confirm compliance across all EU client data, and established the governance gate before any further platform investment was approved.</p>
+        <div class="card-outcomes">
+          <span class="outcome-pill gold">100% GDPR compliance</span>
+          <span class="outcome-pill">Executive decision document</span>
+          <span class="outcome-pill">Risk escalation leadership</span>
+          <span class="outcome-pill">Regional architecture definition</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="card-meta">
+          <span class="card-tag">Voice of Customer</span>
+          <span class="card-company">S&amp;P Global (via IHS Markit merger)</span>
+        </div>
+        <h3 class="card-title">Built a multi-channel VOC system that fed every roadmap decision for 700 institutional clients</h3>
+        <p class="card-body">Roadmap prioritization across two concurrent products (iLevel and iPreo Prism) required synthesizing signal from clients managing trillions in AUM. Built and operated a structured VOC system combining Pendo behavioral analytics, quarterly NPS surveys, Aha feedback, account management escalations, and direct discovery sessions with GPs, LPs, and CPOs at BlackRock, Hamilton Lane, and AIA. Translated multi-source insight into 6 to 12 month roadmaps prioritized by client impact, severity, and business alignment, presented to executive leadership each cycle.</p>
+        <div class="card-outcomes">
+          <span class="outcome-pill">Pendo and Aha analytics</span>
+          <span class="outcome-pill">Direct CPO discovery sessions</span>
+          <span class="outcome-pill">Two-product roadmap ownership</span>
+          <span class="outcome-pill">Executive roadmap presentation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI PROJECTS -->
+<section id="projects" style="background: var(--navy-deep); padding: 80px 48px;">
+  <div class="section-inner">
+    <p class="section-eyebrow">Independent Projects</p>
+    <h2 class="section-title" style="color: var(--off-white);">Building with AI</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon">⚙</div>
+        <h3 class="project-name">Behind the Bot</h3>
+        <p class="project-desc">Live Streamlit app exposing a 13-step AI customer support pipeline in real time — auth, input guardrails, intent ML cascade, RAG retrieval, output guardrails, and LLM-as-judge. Built to show the full production architecture, not just the chat surface.</p>
+        <a href="https://behind-the-bot.streamlit.app" class="project-link" target="_blank">Live app ↗</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">👶</div>
+        <h3 class="project-name">BabyBudgetPro</h3>
+        <p class="project-desc">0 to 1 AI product for expecting and new parents. LLM-powered reasoning workflows incorporate life stage, household constraints, and budget to generate explainable recommendations — essential vs optional, affordable vs premium. Human-in-the-loop by design.</p>
+        <a href="https://linkedin.com/in/poojatyagi18" class="project-link" target="_blank">In development</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">📈</div>
+        <h3 class="project-name">AIWealthAssist</h3>
+        <p class="project-desc">0 to 1 AI wealth advisory product built after 30+ user interviews uncovering an access gap for digitally native earners. Combines risk tolerance, time horizons, and open-finance data aggregation for context-aware capital allocation recommendations across asset classes.</p>
+        <a href="https://linkedin.com/in/poojatyagi18" class="project-link" target="_blank">In development</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Capabilities</p>
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Product</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Product Strategy and Vision</span>
+          <span class="skill-tag">Roadmapping and Prioritization</span>
+          <span class="skill-tag">Enterprise Platform PM</span>
+          <span class="skill-tag">Influence Without Authority</span>
+          <span class="skill-tag">Discovery-to-Delivery</span>
+          <span class="skill-tag">Voice of Customer</span>
+          <span class="skill-tag">PRD and Decision Documentation</span>
+          <span class="skill-tag">Go-to-Market Strategy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">REST and Async APIs</span>
+          <span class="skill-tag">OAuth 2.0 / SSO / RBAC</span>
+          <span class="skill-tag">Microservices</span>
+          <span class="skill-tag">Platform Scalability (SLOs/SLAs)</span>
+          <span class="skill-tag">Cloud-Native Architecture</span>
+          <span class="skill-tag">Security-by-Design</span>
+          <span class="skill-tag">GDPR Compliance</span>
+          <span class="skill-tag">LLM Fine-Tuning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Analytical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">KPI and Metrics Frameworks</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Data-Informed Decision Making</span>
+          <span class="skill-tag">Funnel and Behavioral Analysis</span>
+          <span class="skill-tag">Pendo</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Aha!</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">Swagger/OpenAPI</span>
+          <span class="skill-tag">Salesforce</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-section">
+  <div class="section-inner">
+    <p class="section-eyebrow" style="text-align:center;">Get in touch</p>
+    <h2 class="section-title">Let's talk about the role</h2>
+    <div class="gold-rule"></div>
+
+    <div class="contact-links">
+      <a href="mailto:pooja.tyagi.er@gmail.com" class="contact-link primary">pooja.tyagi.er@gmail.com</a>
+      <a href="https://linkedin.com/in/poojatyagi18" class="contact-link secondary" target="_blank">LinkedIn Profile</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Pooja Tyagi &nbsp;·&nbsp; Principal Product Manager &nbsp;·&nbsp; Washington, D.C.
+</footer>
+
+</body>
+</html>
